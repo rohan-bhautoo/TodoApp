@@ -1,0 +1,49 @@
+# Visual Studio files
+.vs/
+
+# Build results
+/bin/
+/obj/
+
+# NuGet packages
+/packages/
+
+# User-specific files
+*.suo
+*.user
+*.userprefs
+*.sln.docstates
+
+# Build and release management
+_build/
+Releases/
+*_i.cproj
+*_r.cproj
+*.ipdb
+*.pdb
+
+# Resharper cache
+*_Resharper.*
+*.[Rr]e[Ss]harper
+
+# Test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Entity Framework migration history
+*/YourProjectName.Backend/Migrations/*
+
+# Logs
+*.log
+logs/
+LogFiles/
+
+# IDE-specific files
+*.idea/
+*.vscode/
+*.sln.ide/
+
+# Other generated files
+*.swp
+*.bak
+*~
