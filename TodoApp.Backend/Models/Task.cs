@@ -4,18 +4,18 @@
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string Status { get; set; }
+        public bool Status { get; set; }
         public string Description { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime? UpdatedDate { get; set; }  
-        public string UserId { get; set; }
-        public Task(int Id, string Title, string Status, string Description, string UserId)
+        public string CreatedDate { get; set; }
+        public string? UpdatedDate { get; set; }  
+        public Guid UserId { get; set; }
+        public Task(int Id, string Title, bool Status, string Description, Guid UserId)
         {
             this.Id = Id;
             this.Title = Title;
             this.Status = Status;
             this.Description = Description;
-            this.CreatedDate = DateTime.Now;
+            this.CreatedDate = DateTime.Now.ToString();
             this.UserId = UserId;
         }
 
