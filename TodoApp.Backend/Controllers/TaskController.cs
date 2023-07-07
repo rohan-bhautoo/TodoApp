@@ -22,11 +22,11 @@ namespace TodoApp.Backend.Controllers
             return taskRepository.GetAllTasks();
         }
 
-        // GET: api/tasks/{id}
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        // GET: api/tasks/{taskId}
+        [HttpGet("{taskId}")]
+        public IActionResult Get(int taskId)
         {
-            var task = taskRepository.GetTaskById(id);
+            var task = taskRepository.GetTaskById(taskId);
             if (task == null)
             {
                 return NotFound();
@@ -46,13 +46,13 @@ namespace TodoApp.Backend.Controllers
             return BadRequest(ModelState);
         }
 
-        // PUT: api/tasks/{id}
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Task task)
+        // PUT: api/tasks/{taskId}
+        [HttpPut("{taskId}")]
+        public IActionResult Put(int taskId, [FromBody] Task task)
         {
-            if (ModelState.IsValid && id == task.Id)
+            if (ModelState.IsValid && taskId == task.Id)
             {
-                var existingTask = taskRepository.GetTaskById(id);
+                var existingTask = taskRepository.GetTaskById(taskId);
                 if (existingTask == null)
                 {
                     return NotFound();
@@ -63,16 +63,16 @@ namespace TodoApp.Backend.Controllers
             return BadRequest(ModelState);
         }
 
-        // DELETE: api/tasks/{id}
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        // DELETE: api/tasks/{taskId}
+        [HttpDelete("{taskId}")]
+        public IActionResult Delete(int taskId)
         {
-            var existingTask = taskRepository.GetTaskById(id);
+            var existingTask = taskRepository.GetTaskById(taskId);
             if (existingTask == null)
             {
                 return NotFound();
             }
-            taskRepository.DeleteTask(id);
+            taskRepository.DeleteTask(taskId);
             return NoContent();
         }
     }

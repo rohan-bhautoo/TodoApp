@@ -30,11 +30,11 @@ namespace TodoApp.Backend.Controllers
             return userRepository.GetAllUsers();
         }
 
-        // GET: api/User/5
-        [HttpGet("{id}")]
-        public IActionResult Get(Guid id)
+        // GET: api/User/{userId}
+        [HttpGet("{userId}")]
+        public IActionResult Get(Guid userId)
         {
-            var user = userRepository.GetUserById(id);
+            var user = userRepository.GetUserById(userId);
             if (user == null)
             {
                 return NotFound();
@@ -50,19 +50,19 @@ namespace TodoApp.Backend.Controllers
             if (ModelState.IsValid)
             {
                 userRepository.AddUser(user);
-                return CreatedAtAction(nameof(Get), new { id = user.UserId }, user);
+                return CreatedAtAction(nameof(Get), new { userId = user.UserId }, user);
             }
             return BadRequest(ModelState);
         }
 
-        // PUT: api/User/5
+        // PUT: api/User/{userId}
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("{userId}")]
         public IActionResult Put(Guid userId, [FromBody] User user)
         {
             if (ModelState.IsValid && userId == user.UserId)
             {
-                var existingUser = userRepository.GetUserById(userId);
+                User existingUser = userRepository.GetUserById(userId);
                 if (existingUser == null)
                 {
                     return NotFound();
@@ -73,16 +73,16 @@ namespace TodoApp.Backend.Controllers
             return BadRequest(ModelState);
         }
 
-        // DELETE: api/User/5
-        [HttpDelete("{id}")]
+        // DELETE: api/User/{userId}
+        [HttpDelete("{userId}")]
         public IActionResult Delete(Guid userId)
         {
-            var existingTask = userRepository.GetUserById(userId);
-            if (existingTask == null)
+            User existingUser = userRepository.GetUserById(userId);
+            if (existingUser == null)
             {
                 return NotFound();
             }
-            userRepository.GetUserById(userId);
+            userRepository.DeleteUser(userId);
             return NoContent();
         }
     }

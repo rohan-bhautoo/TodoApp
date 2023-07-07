@@ -5,9 +5,9 @@ namespace TodoApp.Backend.Repositories
     public interface IUserRepository
     {
         IEnumerable<User> GetAllUsers();
-        User GetUserById(Guid id);
+        User GetUserById(Guid userId);
         void AddUser(User user);
         void UpdateUser(User user);
-        void DeleteUser(Guid id);
+        void DeleteUser(Guid userId);
     }
 }

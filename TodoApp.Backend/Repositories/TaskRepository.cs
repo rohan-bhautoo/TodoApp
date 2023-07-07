@@ -18,9 +18,9 @@ namespace TodoApp.Backend.Repositories
             return dbContext.Task.ToList();
         }
 
-        public Task GetTaskById(int id)
+        public Task GetTaskById(int taskId)
         {
-            return dbContext.Task.Find(id);
+            return dbContext.Task.Find(taskId)!;
         }
 
         public void AddTask(Task task)
@@ -35,9 +35,9 @@ namespace TodoApp.Backend.Repositories
             dbContext.SaveChanges();
         }
 
-        public void DeleteTask(int id)
+        public void DeleteTask(int taskId)
         {
-            var task = dbContext.Task.Find(id);
+            Task task = dbContext.Task.Find(taskId)!;
             dbContext.Task.Remove(task);
             dbContext.SaveChanges();
         }
