@@ -10,5 +10,6 @@ namespace TodoApp.Backend.Data
         }
 
         public DbSet<TodoApp.Backend.Models.Task> Task { get; set; } = default!;
+        public DbSet<TodoApp.Backend.Models.User> User { get; set; } = default!;
     }
 }

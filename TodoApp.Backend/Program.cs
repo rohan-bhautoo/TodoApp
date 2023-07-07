@@ -7,9 +7,9 @@ builder.Services.AddDbContext<TodoAppBackendContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TodoAppBackendContext") ?? throw new InvalidOperationException("Connection string 'TodoAppBackendContext' not found.")));
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
