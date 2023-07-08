@@ -67,7 +67,7 @@ namespace TodoApp.Backend.Controllers
                 {
                     return NotFound();
                 }
-                userRepository.UpdateUser(user);
+                userRepository.UpdateUser(existingUser, user);
                 return NoContent();
             }
             return BadRequest(ModelState);

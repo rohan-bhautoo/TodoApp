@@ -47,15 +47,22 @@ namespace TodoApp.Backend.Repositories
             var salt = GenerateSalt();
             var hashedPassword = HashPassword(user.Password, salt);
 
-            User userVal = new(user.UserId,user.FirstName,user.LastName,user.Email,hashedPassword);
+            User userVal = new(
+                new Guid(),
+                user.FirstName,
+                user.LastName,
+                user.Email,
+                hashedPassword,
+                Convert.ToBase64String(salt),
+                DateTime.UtcNow);
 
             dbContext.User.Add(userVal);
             dbContext.SaveChanges();
         }
 
-        public void UpdateUser(User user)
+        public void UpdateUser(User existingUser, User user)
         {
-            dbContext.Entry(user).State = EntityState.Modified;
+            existingUser.UpdateUser(user);
             dbContext.SaveChanges();
         }
 

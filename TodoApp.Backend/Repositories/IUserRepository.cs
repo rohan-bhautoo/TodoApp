@@ -7,7 +7,7 @@ namespace TodoApp.Backend.Repositories
         IEnumerable<User> GetAllUsers();
         User GetUserById(Guid userId);
         void AddUser(User user);
-        void UpdateUser(User user);
+        void UpdateUser(User existingUser, User newUser);
         void DeleteUser(Guid userId);
     }
 }

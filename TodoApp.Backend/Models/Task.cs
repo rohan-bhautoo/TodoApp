@@ -9,13 +9,14 @@
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }  
         public Guid UserId { get; set; }
-        public Task(int Id, string Title, bool Status, string Description, Guid UserId)
+        public Task(int Id, string Title, bool Status, string Description, Guid UserId, DateTime? UpdatedDate)
         {
             this.Id = Id;
             this.Title = Title;
             this.Status = Status;
             this.Description = Description;
-            this.CreatedDate = DateTime.Now;
+            CreatedDate = DateTime.Now;
+            this.UpdatedDate = UpdatedDate;
             this.UserId = UserId;
         }
 
